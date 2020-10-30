@@ -11,13 +11,11 @@ export default class userRoutes {
   }
 
   routes() {
+    this.router.get('/summary', this.controller.getSummary)
+
     this.router
       .route("/")
       .post(this.controller.createOne)
-      .get(this.controller.getAll)
-      .patch(this.controller.updateOne)
-      .delete(this.controller.deleteOne);
 
-    this.router.route("/:id").get(this.controller.getOne);
   }
 }
