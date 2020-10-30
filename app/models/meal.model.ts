@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from "mongoose";
-import bcrypt from "bcryptjs";
 
 interface mealInterface {
   members?: [mongoose.Schema.Types.ObjectId];
@@ -26,9 +25,12 @@ const mealSchema = new Schema({
   },
   payments: [
     {
-      paidBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-      amount: { type: Number },
-      required: [true, "Please Provide Payments"],
+      paidBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: [true, "Please Provide Provider"],
+      },
+      amount: { type: Number, required: [true, "Please Provide Payment Amount"] },
     },
   ],
   date: { type: Date, default: Date.now },
