@@ -18,6 +18,7 @@ class App {
     this.app.use(bodyParser.json());
     this.app.use(errorHandler);
     this.app.use(cors());
+    this.app.use(express.static('view/build'))
   }
   
   private routing() {

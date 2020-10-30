@@ -11,7 +11,7 @@ export default class mealController extends baseController {
 
   getSummary = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
-      const map = {}
+      const map = {};
       const paymentPerUser = await Meal.aggregate([
         {
           $unset: ["type", "date", "members", "cost"],
@@ -34,8 +34,8 @@ export default class mealController extends baseController {
           },
         },
       ]);
-      for (const item of paymentPerUser){
-        map[item._id] = [item];
+      for (const item of paymentPerUser) {
+        map[item._id] = item;
       }
       const billPerUser = await Meal.aggregate([
         {
@@ -70,18 +70,29 @@ export default class mealController extends baseController {
         },
       ]);
 
-      for (const item of billPerUser){
-        if(item._id in map){
+      for (const item of billPerUser) {
+        if (item._id in map) {
           map[item._id].bill = item.bill;
-        }else{
-          item.amount = 0;
+        } else {
+          item.payment = 0;
           map[item._id] = item;
         }
       }
 
+      const summary = [];
+      for (const key of Object.keys(map)) {
+        const rec = map[key];
+        summary.push({
+          fullName: rec.user[0].firstName + ' ' + rec.user[0].lastName,
+          pending: Math.round(rec.bill),
+          paid: Math.round(rec.payment),
+          net: Math.round(rec.bill - rec.payment),
+        });
+      }
+
       res.status(200).json({
         status: "success",
-        data: billPerUser,
+        data: summary,
       });
     }
   );
