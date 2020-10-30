@@ -8,21 +8,34 @@ interface mealInterface {
 }
 
 const mealSchema = new Schema({
-  members: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref:'User',
-    required: [true, "Please Provide Members"],
-  }],
+  members: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: [true, "Please Provide Members"],
+    },
+  ],
   type: {
     type: String,
     enum: ["Lunch", "Other"],
     default: "Lunch",
   },
+  cost: {
+    type: Number,
+    required: [true, "Please Provide Cost"],
+  },
+  payments: [
+    {
+      paidBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+      amount: { type: Number },
+      required: [true, "Please Provide Payments"],
+    },
+  ],
   date: { type: Date, default: Date.now },
 });
 
-interface userDoc extends Document, mealInterface {}
+interface mealDoc extends Document, mealInterface {}
 
-const User = mongoose.model<userDoc>("Meal", mealSchema);
+const Meal = mongoose.model<mealDoc>("Meal", mealSchema);
 
-export { User, mealInterface, userDoc };
+export { Meal, mealInterface, mealDoc };
