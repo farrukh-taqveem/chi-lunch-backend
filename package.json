@@ -1,0 +1,50 @@
+{
+  "name": "chi-lunch-backend",
+  "version": "1.0.0",
+  "description": "Lunch Calculation of Team Lunch",
+  "main": "server.ts",
+  "scripts": {
+    "test": "node server.ts",
+    "tsc": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon server.ts",
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farrukh-taqveem/chi-lunch-backend.git"
+  },
+  "keywords": [
+    "Lunch",
+    "Calucaltion",
+    "Meal",
+    "calculation"
+  ],
+  "author": "farrukh_taqveem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/farrukh-taqveem/chi-lunch-backend/issues"
+  },
+  "homepage": "https://github.com/farrukh-taqveem/chi-lunch-backend#readme",
+  "dependencies": {
+    "@types/mongoose": "^5.7.36",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.9"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/express": "^4.17.8",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^14.11.10",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}
