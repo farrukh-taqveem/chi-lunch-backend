@@ -9,9 +9,7 @@ class baseController {
         const doc = await this.Model.create(req.body);
         res.status(201).json({
             status: 'success',
-            data: {
-                data: doc,
-            },
+            data: doc
         });
     });
     updateOne = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -23,9 +21,7 @@ class baseController {
 
         res.status(200).json({
             status: 'success',
-            data: {
-                data: doc,
-            },
+            data: doc,
         });
     });
     getOne = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -37,9 +33,7 @@ class baseController {
 
         res.status(200).json({
             status: 'success',
-            data: {
-                data: doc,
-            },
+            data: doc
         });
     });
     getAll = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -51,9 +45,7 @@ class baseController {
 
         res.status(200).json({
             status: 'success',
-            data: {
-                data: docs,
-            },
+            data: docs
         });
     });
     deleteOne = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
