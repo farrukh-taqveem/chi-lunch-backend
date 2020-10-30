@@ -3,8 +3,8 @@ import  errorHandler from './utils/errorHandler';
 import  userRoute from './routes/user.route';
 import  mealRoute from './routes/meal.route';
 
-
 import bodyParser from "body-parser";
+import cors from 'cors';
 
 class App {
   app: Application;
@@ -17,6 +17,7 @@ class App {
   private config() {
     this.app.use(bodyParser.json());
     this.app.use(errorHandler);
+    this.app.use(cors());
   }
   
   private routing() {
