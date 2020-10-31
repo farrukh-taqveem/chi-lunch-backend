@@ -1,4 +1,5 @@
 import express, { Application, Request, Response } from 'express';
+import helmet from 'helmet';
 import  errorHandler from './utils/errorHandler';
 import  userRoute from './routes/user.route';
 import  mealRoute from './routes/meal.route';
@@ -18,6 +19,7 @@ class App {
     this.app.use(bodyParser.json());
     this.app.use(errorHandler);
     this.app.use(cors());
+    this.app.use(helmet())
     this.app.use(express.static('view/build'))
   }
   
