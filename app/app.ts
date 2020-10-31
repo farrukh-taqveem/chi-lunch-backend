@@ -19,7 +19,9 @@ class App {
     this.app.use(bodyParser.json());
     this.app.use(errorHandler);
     this.app.use(cors());
-    this.app.use(helmet())
+    this.app.use(helmet({
+      contentSecurityPolicy: false,
+    }))
     this.app.use(express.static('view/build'))
   }
   
