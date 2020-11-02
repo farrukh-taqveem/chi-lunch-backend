@@ -16,7 +16,6 @@ export default class userRoutes {
 
     this.router
       .route("/")
-      .post(this.controller.createOne)
-      .get(authorization.verifyRequest ,this.controller.getAll)
+      .post(authorization.verifyRequest, this.controller.createOne)
   }
 }

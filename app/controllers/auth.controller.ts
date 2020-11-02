@@ -13,7 +13,7 @@ import AppError from '../utils/appError';
             next();
         }
         else{
-            next(new AppError('UnAuthorized Request, Please Provide Verification Key', 401))
+            next(new AppError('UnAuthorized Request, Please Provide Correct Verification Key', 401))
         }
     }
 }
