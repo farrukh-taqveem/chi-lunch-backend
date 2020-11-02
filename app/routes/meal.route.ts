@@ -1,4 +1,5 @@
 import mealController from "../controllers/meal.controller";
+import authorization from "../controllers/auth.controller";
 import express, { Router } from "express";
 
 export default class userRoutes {
@@ -16,6 +17,6 @@ export default class userRoutes {
     this.router
       .route("/")
       .post(this.controller.createOne)
-
+      .get(authorization.verifyRequest ,this.controller.getAll)
   }
 }
